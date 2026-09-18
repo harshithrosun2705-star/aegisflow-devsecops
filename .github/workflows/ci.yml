@@ -40,10 +40,9 @@ jobs:
 
       - name: Check application health
         run: |
-          docker ps
-          docker logs aegisflow-ci
-          curl -v --fail \
-            --retry 5 \
-            --retry-connrefused \
+          curl --fail \
+            --retry 10 \
+            --retry-all-errors \
             --retry-delay 2 \
-            http://127.0.0.1:8000/health/live
+            http://127.0.0.1:8000/health/live \
+          || (docker logs aegisflow-ci && exit 1)
