@@ -40,7 +40,9 @@ jobs:
 
       - name: Check application health
         run: |
-          curl --fail \
+          docker ps
+          docker logs aegisflow-ci
+          curl -v --fail \
             --retry 5 \
             --retry-connrefused \
             --retry-delay 2 \
