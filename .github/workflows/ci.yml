@@ -58,7 +58,7 @@ jobs:
       - name: Trivy Security Gate
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: :"aegisflow-api:ci"
+          image-ref: "aegisflow-api:ci"
           format: "table"
           severity: "HIGH,CRITICAL"
           ignore-unfixed: true
