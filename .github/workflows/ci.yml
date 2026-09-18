@@ -27,3 +27,6 @@ jobs:
 
       - name: Run tests
         run: python -m pytest -v
+      
+      - name: Build Docker image
+        run: docker build -t aegisflow-api:ci .
