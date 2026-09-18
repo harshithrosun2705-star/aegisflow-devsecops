@@ -30,3 +30,18 @@ jobs:
       
       - name: Build Docker image
         run: docker build -t aegisflow-api:ci .
+
+      - name: Run Docker container
+        run: |
+          docker run -d \
+            --name aegisflow-ci \
+            -p 8000:8000 \
+            aegisflow-api:ci
+
+      - name: Check application health
+        run: |
+          curl --fail \
+            --retry 5 \
+            --retry-connrefused \
+            --retry-delay 2 \
+            http://127.0.0.1:8000/health/live
