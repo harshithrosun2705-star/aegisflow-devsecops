@@ -46,3 +46,11 @@ jobs:
             --retry-delay 2 \
             http://127.0.0.1:8000/health/live \
           || (docker logs aegisflow-ci && exit 1)
+
+      - name: Trivy Vulnerability Report
+        uses: aquasecurity/trivy-action@0.33.1
+        with:
+          image-ref: "aegisflow-api:ci"
+          format: "table"
+          severity: "HIGH,CRITICAL"
+          exit-code: "0"
