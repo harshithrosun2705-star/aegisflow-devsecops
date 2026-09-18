@@ -48,7 +48,7 @@ jobs:
           || (docker logs aegisflow-ci && exit 1)
 
       - name: Trivy Vulnerability Report
-        uses: aquasecurity/trivy-action@0.33.1
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: "aegisflow-api:ci"
           format: "table"
