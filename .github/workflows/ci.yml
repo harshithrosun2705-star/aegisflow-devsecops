@@ -31,11 +31,15 @@ jobs:
       - name: Build Docker image
         run: docker build -t aegisflow-api:ci .
 
-      - name: Run Docker container
+      - name: Run Hardened Docker container
         run: |
           docker run -d \
             --name aegisflow-ci \
             -p 8000:8000 \
+            --cap-drop=ALL \
+            --security-opt=no-new-privileges:true \
+            --read-only \
+            --tmpfs /tmp \
             aegisflow-api:ci
 
       - name: Check application health
