@@ -67,3 +67,8 @@ jobs:
           severity: "HIGH,CRITICAL"
           ignore-unfixed: true
           exit-code: "1"
+
+      - name: Show GitHub repository IDs
+        run: |
+          echo "Owner ID: ${{ github.repository_owner_id }}"
+          echo "Repository ID: ${{ github.repository_id }}"
