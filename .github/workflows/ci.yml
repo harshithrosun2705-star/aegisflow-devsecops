@@ -82,6 +82,7 @@ jobs:
 
       - name: Login to Amazon ECR
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Tag and push image to ECR
