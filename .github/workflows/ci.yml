@@ -79,5 +79,5 @@ jobs:
           role-to-assume: arn:aws:iam::348364741971:role/aegisflow-role
           aws-region: ap-southeast-2
 
-      - name: Verify AWS identity
-        run: aws sts get-caller-identity
+      - name: Login to Amazon ECR
+        run: aws-actions/amazon-ecr-login@v2
